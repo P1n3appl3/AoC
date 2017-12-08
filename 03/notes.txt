@@ -1,0 +1,15 @@
+{1} (1 0 1 0 1 0 1) {1 0} (1 1 0 0 1 1 0 0 1 1 0 0 1 1) {1 0 0}
+(1 1 1 0 0 0 1 1 1 0 0 0 1 1 1 0 0 0 1 1 1) {1 0 0 0} (1 1 1 1 0 0 0 0 1 1 1 1 0 0 0 0 1 1 1 1 0 0 0 0 1 1 1 1)
+
+1 = add to distance
+0 = subtract from distance
+
+
+1+7  =  8       sum = 2
+2+14 = 16       sum = 4
+3+21 = 24       sum = 6
+4+28 = 32
+
+4(n^2 + n)
+
+grows by 8 per ring and the diagonal gets 2 further away
