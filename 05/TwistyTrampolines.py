@@ -1,7 +1,7 @@
 with open("input.txt") as f:
     offsets = map(int, f.readlines())
 
-preserved = offsets[::]
+preserved = offsets[:]
 
 from datetime import datetime
 start = datetime.now()
