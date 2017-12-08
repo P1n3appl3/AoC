@@ -1,0 +1,19 @@
+Python
+Part 1: 0.093
+Part 2: 9.657
+
+C (gcc)
+Part 1: 0.001
+part 2: 0.175
+
+C (gcc -Ofast)
+Part 1: 0.001
+part 2: 0.043
+
+C (clang)
+Part 1: 0.001
+part 2: 0.098
+
+C (clang -Ofast)
+Part 1: 0.001
+part 2: 0.055
