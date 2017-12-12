@@ -1,5 +1,4 @@
-with open("input.txt") as f:
-    raw = (i.strip() for i in f.readlines())
+raw = map(lambda x: x.strip(), open("input.txt"))
 
 from collections import defaultdict
 reg = defaultdict(int)

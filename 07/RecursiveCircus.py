@@ -18,8 +18,7 @@ class Program():
         self.totalWeight = self.weight + sum(i.updateTotalWeight() for i in self.children)
         return self.totalWeight
 
-with open("input.txt") as f:
-    raw = (i.strip() for i in f.readlines())
+raw = map(lambda x: x.strip(), open("input.txt"))
 
 programs = []
 for line in raw:

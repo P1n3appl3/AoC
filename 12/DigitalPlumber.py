@@ -8,8 +8,7 @@ def follow(n):
                 examine.append(i)
     return visited
 
-with open("input.txt") as f:
-    pipes = map(lambda x: map(int, x.replace(',', ' ').strip().split()[2:]), f.readlines())
+pipes = [map(int, [i.strip(',') for i in x.split()][2:]) for x in open("input.txt")]
 
 print "Part 1:", len(follow(0))
 

@@ -1,5 +1,4 @@
-with open("input.txt") as f:
-    sheet = [map(int, i.split()) for i in f.readlines()]
+sheet = map(lambda x: map(int, x.split()), open("input.txt"))
 
 print "Part 1:", sum(max(i) - min(i) for i in sheet)
 

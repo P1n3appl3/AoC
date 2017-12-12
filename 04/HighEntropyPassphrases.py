@@ -1,5 +1,4 @@
-with open("input.txt") as f:
-    phrases = [i.split() for i in f.readlines()]
+phrases = map(lambda x: x.split(), open("input.txt"))
 
 print "Part 1:", [len(i) == len(set(i)) for i in phrases].count(True)
 
