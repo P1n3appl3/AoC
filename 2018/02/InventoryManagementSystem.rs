@@ -1,14 +1,6 @@
 use std::fs::File;
 use std::io::Read;
 
-fn diff(s1: &str, s2: &str) -> String {
-    s1.chars()
-        .zip(s2.chars())
-        .filter(|x| x.0 == x.1)
-        .map(|x| x.0)
-        .collect::<String>()
-}
-
 fn main() {
     let mut input = String::new();
     let mut f = File::open("input.txt").unwrap();
@@ -34,20 +26,24 @@ fn main() {
         }
     }
     println!(
-        "Twos: {}, Threes: {}, Checksum: {}",
+        "twos: {}, threes: {}, checksum: {}",
         twos,
         threes,
         twos * threes
     );
 
-    let lines = input.lines().collect::<Vec<&str>>();
+    let mut lines = input.lines().collect::<Vec<&str>>();
     let full_len = lines[0].len();
-    for i in 0..lines.len() - 1 {
-        for j in i + 1..lines.len() {
-            let d = diff(lines[i], lines[j]);
-            if d.len() == full_len - 1 {
-                println!("a: {}, b:{}, diff: {}", lines[i], lines[j], d);
-            }
+    lines.sort();
+    for pair in lines.windows(2) {
+        let d = pair[0]
+            .chars()
+            .zip(pair[1].chars())
+            .filter(|(a, b)| a == b)
+            .map(|(a, _)| a)
+            .collect::<String>();
+        if d.len() == full_len - 1 {
+            println!("common: {}", d);
         }
     }
 }
