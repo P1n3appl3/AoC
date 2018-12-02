@@ -6,6 +6,7 @@ fn main() {
     let mut contents = String::new();
     let mut f = File::open("input.txt").unwrap();
     f.read_to_string(&mut contents).unwrap();
+
     let numbers: Vec<i32> = contents
         .lines()
         .map(|n| n.parse::<i32>().unwrap())
