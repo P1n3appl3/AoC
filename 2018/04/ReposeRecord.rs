@@ -38,16 +38,6 @@ struct Time {
     min: u8,
 }
 
-impl Time {
-    fn diff(&self, other: &Self) -> u8 {
-        if other.hour != self.hour {
-            other.min + 60 - self.min
-        } else {
-            other.min - self.min
-        }
-    }
-}
-
 impl fmt::Debug for Time {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(
