@@ -82,44 +82,7 @@ fn main() {
         .collect::<Vec<(Time, Event)>>();
     events.sort();
 
-    let mut guards = HashMap::new();
     let mut current = 0;
-    for i in 0..events.len() {
-        let (ref t, ref e) = events[i];
-        // print!("{:?} - {:?}", t, e);
-        match e {
-            Event::Start(g) => current = *g,
-            // Event::Wake => println!("\t\t\tdurration: {}", events[i - 1].0.diff(t)),
-            Event::Wake => *guards.entry(current).or_insert(0) += events[i - 1].0.diff(t) as usize,
-            Event::Sleep => {}
-        }
-    }
-    let sleepiest = guards.iter().map(|(a, b)| (*b, *a)).max().unwrap().1;
-    println!("guard {} had the most sleep", sleepiest);
-
-    let mut times = [0; 60];
-    for i in 0..events.len() {
-        let (ref t, ref e) = events[i];
-        match e {
-            Event::Start(g) => current = *g,
-            Event::Sleep => {}
-            Event::Wake => if current == sleepiest {
-                for i in events[i - 1].0.min..t.min {
-                    times[i as usize] += 1;
-                }
-            },
-        }
-    }
-    let best_time = times
-        .iter()
-        .enumerate()
-        .map(|(a, b)| (b, a))
-        .max()
-        .unwrap()
-        .1;
-    println!("best time: {}", best_time);
-    println!("answer: {}", best_time * sleepiest as usize);
-
     let mut guards = HashMap::new();
     for i in 0..events.len() {
         let (ref t, ref e) = events[i];
@@ -134,17 +97,38 @@ fn main() {
             Event::Sleep => {}
         }
     }
-    let stuff = guards
+
+    let strat1 = guards
+        .iter()
+        .map(|(id, times)| {
+            let best_time = times
+                .iter()
+                .enumerate()
+                .map(|(a, b)| (b, a))
+                .max()
+                .unwrap()
+                .1;
+            (times.iter().sum::<usize>(), best_time, id)
+        }).max()
+        .unwrap();
+    // println!("{:?}", strat1);
+    println!(
+        "guard {} sleeps for a total of {} minutes, but mostly on minute {}",
+        strat1.2, strat1.0, strat1.1
+    );
+    println!("answer: {}", strat1.1 * *strat1.2 as usize);
+
+    let strat2 = guards
         .iter()
         .map(|(id, times)| {
             let best_time = times.iter().enumerate().map(|(a, b)| (b, a)).max().unwrap();
             (best_time.0, best_time.1, id)
         }).max()
         .unwrap();
-
+    // println!("{:?}", strat2);
     println!(
         "guard {} sleeps through minute {} {} times",
-        stuff.2, stuff.1, stuff.0
+        strat2.2, strat2.1, strat2.0
     );
-    println!("answer: {}", stuff.1 * *stuff.2 as usize);
+    println!("answer: {}", strat2.1 * *strat2.2 as usize);
 }

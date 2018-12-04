@@ -48,7 +48,7 @@ fn main() {
         "covered twice: {}",
         board
             .iter()
-            .map(|row| row.iter().filter(|&cell| *cell > 1).count())
+            .map(|row| row.iter().filter(|cell| **cell > 1).count())
             .sum::<usize>()
     );
 
