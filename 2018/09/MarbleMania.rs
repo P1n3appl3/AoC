@@ -1,4 +1,3 @@
-#![feature(try_reserve)]
 use std::fs::File;
 use std::io::Read;
 
