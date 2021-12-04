@@ -1,2 +1,2 @@
-in =:1!:1<'input'
+in =: 1!:1<'input'
 ans =: {{echo 'Answer: ',":y}}

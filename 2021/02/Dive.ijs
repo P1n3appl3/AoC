@@ -1,10 +1,10 @@
 #!/usr/bin/j
 load '../util.ijs'
-in =:(;:;._2)in
+in =: ;:;._2 in
 d =: {."1>{."1 in
 num =: ".>{:"1 in
-depth =: num*(-1*d='u')+d='d'
+depths =: +/\num*(-1*d='u')+d='d'
 dist =: num*d='f'
-ans (+/dist)*+/depth
-ans (+/dist)*+/dist*+/\depth
-exit 0
+ans (+/dist)*{:depths
+ans (+/dist)*+/dist*depths
+exit''
