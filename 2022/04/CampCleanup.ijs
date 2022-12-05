@@ -1,9 +1,7 @@
 #!/usr/bin/j
 load '../util.ijs'
-NB. in =: fread < 'small'
-parse =: ".@rplc & ('-';'j')
-seq =: 0,[}.[:i.1+]
-dostuff =: {{ u seq/"1 +. parse y }}
-ans +/ > {{0=#-./y +. 0=#-.~/y}} dostuff each LF cut in
-ans +/ > {{ +./ e./ (}."1 y)}} dostuff each LF cut in
+data =: ".rplc&('-';'j');._2 in
+seqs =: {{ +/>u each ([}.[:i.1+])/"1 each <"1 2+. y }}
+ans (0=[:+/-./) seqs ~.data,|."1 data
+ans (+./@e./) seqs data
 exit''
