@@ -1,4 +1,4 @@
-#!/usr/bin/j
+#!/usr/bin/env jconsole
 load '../util.ijs'
 in =: fread < 'test'
 in =: <;._2 in

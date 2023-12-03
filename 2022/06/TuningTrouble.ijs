@@ -1,4 +1,4 @@
-#!/usr/bin/j
+#!/usr/bin/env jconsole
 load '../util.ijs'
 
 solve =: {{ m+ 1 i.~m(m=[:#~.)\ y }}

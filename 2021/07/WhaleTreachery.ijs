@@ -1,4 +1,4 @@
-#!/usr/bin/j
+#!/usr/bin/env jconsole
 load '../util.ijs'
 NB. in =: 1!:1<'test'
 in =: ".;._1',',}:in

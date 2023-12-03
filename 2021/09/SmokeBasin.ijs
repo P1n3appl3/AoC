@@ -1,4 +1,4 @@
-#!/usr/bin/j
+#!/usr/bin/env jconsole
 load '../util.ijs'
 in =: 1!:1<'test'
 grid =: "."0;._2 in

@@ -1,6 +1,6 @@
-#!/usr/bin/j
+#!/usr/bin/env jconsole
 load '../util.ijs'
 l =: \:~+/;._2,&0,".;._2 in
-ans {.l 
+ans {.l
 ans +/3{.l
 exit''

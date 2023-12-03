@@ -1,2 +1,2 @@
-# AOC
+# AoC
 Advent Of Code solutions

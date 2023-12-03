@@ -44,12 +44,12 @@ with open("input") as f:
 #         derived = [
 #             Sum([(not not ((1 << i) & n)) << S[i] for i in range(7)]) for n in signal
 #         ]
-# 
+#
 #         B = [2, 5, 6, 0, 1, 3, 4]
 #         blah = [sum((not not ((1 << i) & n)) << B[i] for i in range(7)) for n in signal]
 #         print(blah)
 #         print([any(g == d for g in grid) for d in blah])
-# 
+#
 #         match_c = [Or([(g == d) for g in grid]) for d in derived]
         s = Solver()
         s.add(range_c + unique_c + match_c)

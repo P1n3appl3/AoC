@@ -1,4 +1,4 @@
-#!/usr/bin/j
+#!/usr/bin/env jconsole
 load '../util.ijs'
 both =: {{ (e.#[)/(--:#y)~.\y }}
 prio =: 38-~-&58^:(>:&97)"0@(a.&i.)

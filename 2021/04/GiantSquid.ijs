@@ -1,4 +1,4 @@
-#!/usr/bin/j
+#!/usr/bin/env jconsole
 load '../util.ijs'
 lines =: [;._2 in
 wrap =: {{1+100|_1+y}}

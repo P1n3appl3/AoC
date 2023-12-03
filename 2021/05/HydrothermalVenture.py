@@ -1,6 +1,6 @@
 import re
 from dataclasses import dataclass
-from collections import defaultdict 
+from collections import defaultdict
 
 @dataclass(order=True, unsafe_hash=True)
 class Point:
@@ -25,8 +25,8 @@ def get_overlaps(lines):
         elif l[0].y == l[1].y:
             for x in range(l[0].x, l[1].x + 1):
                 overlaps[Point(x, l[0].y)] += 1
-        else: 
-            y0,y1 =  l[0].y, l[1].y 
+        else:
+            y0,y1 =  l[0].y, l[1].y
             ry = range(y0, y1 + 1)
             if y1 < y0:
                 ry = range(y0, y1 - 1, -1)

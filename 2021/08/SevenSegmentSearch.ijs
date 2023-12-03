@@ -1,4 +1,4 @@
-#!/usr/bin/j
+#!/usr/bin/env jconsole
 load '../util.ijs'
 NB. There's only 5040 permutations of length 7 for 7 items
 in =: 1!:1<'test'

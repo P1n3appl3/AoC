@@ -1,4 +1,4 @@
-#!/usr/bin/j
+#!/usr/bin/env jconsole
 load '../util.ijs'
 b =: 2+a=:4*i.(#in)%4
 f =: {{(a.i.y{in)-a.i.x}}
