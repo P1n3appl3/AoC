@@ -10,7 +10,7 @@
       packages = with pkgs; [
         python3
         uiua
-        # j # TODO: broken on nixpkgs-unstable HEAD, and old versions don't have working regexes
+        j
       ];
     };
   };
