@@ -8,6 +8,7 @@
   in {
     devShells.x86_64-linux.default = pkgs.mkShell {
       packages = with pkgs; [
+        aoc-cli
         python3
         uiua
         j

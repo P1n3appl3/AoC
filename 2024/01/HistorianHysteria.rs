@@ -1,7 +1,7 @@
 use std::{collections::HashMap, fs};
 
 fn main() {
-    let input = fs::read_to_string("input.txt").unwrap();
+    let input = fs::read_to_string("input").unwrap();
     let (mut a, mut b): (Vec<_>, Vec<_>) = input
         .lines()
         .map(|l| {
