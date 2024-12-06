@@ -1,4 +1,6 @@
+mod ally;
 mod mine;
+mod rahul;
 
 use regex::{Captures, Regex};
 
@@ -45,6 +47,16 @@ mod part_1 {
     fn mine() -> u32 {
         mine::solve(IN, false)
     }
+
+    #[divan::bench]
+    fn ally() -> u32 {
+        ally::part1(IN)
+    }
+
+    #[divan::bench]
+    fn rahul() -> u32 {
+        rahul::part1(IN)
+    }
 }
 
 mod part_2 {
@@ -58,5 +70,15 @@ mod part_2 {
     #[divan::bench]
     fn mine() -> u32 {
         mine::solve(IN, true)
+    }
+
+    #[divan::bench]
+    fn ally() -> u32 {
+        ally::part2(IN)
+    }
+
+    #[divan::bench]
+    fn rahul() -> u32 {
+        rahul::part2(IN)
     }
 }

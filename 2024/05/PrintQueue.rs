@@ -25,31 +25,28 @@ fn order(update: &[u32], transitive: &HashMap<u32, HashSet<u32>>) -> Vec<u32> {
                 return Ordering::Less;
             }
         }
-        if let Some(r) = transitive.get(b) {
-            if r.contains(a) {
-                return Ordering::Greater;
-            }
-        }
-        Ordering::Equal
+        Ordering::Greater
     });
     new
 }
 
 fn main() {
     let input = fs::read_to_string("input").unwrap();
-    let splits: Vec<&str> = input.split("\n\n").collect();
-    let [rules, updates] = splits.as_slice() else { return };
-    let relations: Vec<(u32, u32)> = rules
+    let Some((relations, updates)) = input.split_once("\n\n") else { return };
+    let mut rules: HashMap<u32, HashSet<u32>> = HashMap::new();
+    relations
         .lines()
         .map(|rule| {
-            let mut s = rule.split('|');
-            (s.next().unwrap().parse().unwrap(), s.next().unwrap().parse().unwrap())
+            rule.split('|')
+                .map(str::parse)
+                .map(Result::unwrap)
+                .collect::<Vec<_>>()
+                .try_into()
+                .unwrap()
         })
-        .collect();
-    let mut rules = HashMap::new();
-    for r in relations {
-        rules.entry(r.0).or_insert_with(HashSet::new).insert(r.1);
-    }
+        .for_each(|r: [u32; 2]| {
+            rules.entry(r[0]).or_default().insert(r[1]);
+        });
     let updates: Vec<Vec<u32>> = updates
         .lines()
         .map(|update| update.split(',').map(str::parse).map(Result::unwrap).collect())

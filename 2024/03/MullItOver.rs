@@ -13,16 +13,10 @@ pub fn solve(mut cur: &str, dodont: bool) -> u32 {
         }
         cur = &cur[i + 4..];
         let Some(i) = cur.find(',') else { break };
-        if !cur[..i].bytes().all(|c| c.is_ascii_digit()) {
-            continue;
-        }
-        let lhs: u32 = cur[..i].parse().unwrap();
+        let Ok(lhs) = cur[..i].parse::<u32>() else { continue };
         let rest = &cur[i + 1..];
         let Some(i) = rest.find(')') else { break };
-        if !rest[..i].bytes().all(|c| c.is_ascii_digit()) {
-            continue;
-        }
-        let rhs: u32 = rest[..i].parse().unwrap();
+        let Ok(rhs) = rest[..i].parse::<u32>() else { continue };
         sum += rhs * lhs;
         cur = &rest[i + 1..];
     }
