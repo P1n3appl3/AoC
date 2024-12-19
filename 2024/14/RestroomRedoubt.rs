@@ -20,7 +20,8 @@ fn main() {
     // let ans: i32 = quadrants.iter().product();
     // println!("{ans}");
 
-    for _ in 0..100_000 {
+    // thx to Dan for cluing me in to the upper bound
+    for _ in 0..(w * h) {
         println!("P1");
         println!("{w} {h}");
         let positions: HashSet<_> = bots.iter().map(|arr| (arr[0], arr[1])).collect();
@@ -37,5 +38,6 @@ fn main() {
         });
     }
 }
+// do any formats support 1bpp "monow" pix_fmt?
 // | ffmpeg -i - -c:v libx264 -qp 0 -pix_fmt gray output.mp4
 // mpv --scale=nearest !$
