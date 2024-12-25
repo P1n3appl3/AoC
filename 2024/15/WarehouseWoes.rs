@@ -30,6 +30,7 @@ fn main() {
         // std::io::stdin().read_line(&mut buf).ok();
         // println!("\n{}", dir as char);
         // println!("new: {new:?} ({:?})", board.get(&new).map(|&b| b as char));
+
         match board.get(&new) {
             Some(b'O') => {
                 let mut end = new;
@@ -69,7 +70,6 @@ fn main() {
 
     for dir in dirs.bytes() {
         let new = r#move(pos, dir);
-        //
         // draw(pos, dimensions, &board);
         // std::io::stdin().read_line(&mut buf).ok();
         // println!("\n{}", dir as char);
