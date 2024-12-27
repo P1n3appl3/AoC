@@ -3,9 +3,7 @@ from functools import cache
 with open("input") as f:
     codes = f.read().splitlines()
 pad = lambda s: {
-    c: (x, y)
-    for y, line in enumerate(s.splitlines())
-    for x, c in enumerate(line)
+    c: (x, y) for y, line in enumerate(s.splitlines()) for x, c in enumerate(line)
 }
 numpad = pad("789\n456\n123\n.0A")
 dirpad = pad(".^A\n<v>")
@@ -25,12 +23,14 @@ def shortest(s, target, level=-1):
         vert = ("^" if dy < 0 else "v") * abs(dy)
         recurse = lambda s: shortest(s + "A", target, level + 1)
         a, b = recurse(hori + vert), recurse(vert + hori)
+        # fmt: off
         if    (level <  0 and cur[0] == 0 and new[1] == 3
             or level >= 0 and cur[0] == 0 and new[1] == 0):
             total += a
         elif  (level <  0 and cur[1] == 3 and new[0] == 0
             or level >= 0 and cur[1] == 0 and new[0] == 0):
             total += b
+        # fmt: on
         else:
             total += min(a, b)
         cur = new
