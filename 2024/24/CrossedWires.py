@@ -33,7 +33,7 @@ print(f"{num("z"):046b}")
 # print(f"{x:046b}")
 # print(f"{y:046b}")
 
-"""
+r"""
 how to add stuff:
 
 z0 = x0 ^ y0
