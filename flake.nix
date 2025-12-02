@@ -2,17 +2,22 @@
   description = "dev shell to run my advent of code solutions";
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    utils.url = "github:numtide/flake-utils";
   };
-  outputs = { self, nixpkgs }:
-  let pkgs = nixpkgs.legacyPackages.x86_64-linux;
+  outputs = { self, nixpkgs, utils }: utils.lib.eachDefaultSystem (system:
+    let
+      pkgs = nixpkgs.legacyPackages.${system};
   in {
-    devShells.x86_64-linux.default = pkgs.mkShell {
+
+    devShells.default = pkgs.mkShell {
       packages = with pkgs; [
         aoc-cli
         python3
-        uiua
+        (uiua.override {webcamSupport = true; windowSupport = true; })
+      ] ++ lib.optionals (system == "x86_64-linux") [
         j
-      ];
+      ]
+      ;
     };
-  };
+  });
 }
