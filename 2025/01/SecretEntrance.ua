@@ -5,4 +5,5 @@ L ← ±-@Q⊢    # convert "L"/"R" to -1/1
 \+⊂50        # prepend 50 and get prefix sums
 Z ← /+=0◿100 # count how many %100 == 0
 &s⊸Z
-&s/+⧈(Z⍜(⌵-)⇡₁⊃⊢⊣) 2
+R ← ⍜(⌵-)⇡₁⊃⊢⊣ # generate ranges from pairs
+&s/+⧈(Z R)2    # slide window of pairs across
