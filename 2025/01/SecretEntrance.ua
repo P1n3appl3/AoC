@@ -5,6 +5,4 @@ L ← ±-@Q⊢    # convert "L"/"R" to -1/1
 \+⊂50        # prepend 50 and get prefix sums
 Z ← /+=0◿100 # count how many %100 == 0
 &s⊸Z
-▽≠0◿100⊸∘ :   # keep nonzero elements
-?⌊÷100 -1     # divide by 100 and floor
-&s /+⧈(⍜-⇡) 2 # sum differences along a sliding window
+&s/+⧈(Z⍜(⌵-)⇡₁⊃⊢⊣) 2
