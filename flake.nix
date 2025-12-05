@@ -13,7 +13,8 @@
       packages = with pkgs; [
         aoc-cli
         python3
-        (uiua.override {webcamSupport = true; windowSupport = true; })
+        uiua-unstable
+        # (uiua-unstable.override {webcamSupport = true; windowSupport = true; })
       ] ++ lib.optionals (system == "x86_64-linux") [
         j
       ]
